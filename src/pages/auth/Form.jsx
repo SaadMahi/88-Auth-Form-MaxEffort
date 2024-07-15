@@ -34,13 +34,15 @@ const Form = () => {
 
   //   ON SUBMIT
   const onSubmit = async (data) => {
+    const isChecked = rememberCheck.current
+      ? rememberCheck.current.checked
+      : false;
+
     try {
       setLoading(true);
       const response = await login(data);
 
       if (response) {
-        const isChecked = rememberCheck.current?.checked;
-
         if (response.data.status === 404 || response.data.status === 201) {
           toast.error(response.data.message);
           setLoading(false);
