@@ -2,16 +2,17 @@ import { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { UserDataContext } from "../../store/context/UserContext";
-import Spinner from "../../components/Spinner";
-import { login } from "../../service/auth";
-import Footer from "./components/Footer";
-import Input from "./components/Input";
-import Error from "./components/Error";
-import RememberCheck from "./components/RememberCheck";
-import LoginBtn from "./components/LoginBtn";
-import Header from "./components/Header";
-import { AuthContext } from "../../store/context/AuthContext";
+import { UserDataContext } from "../../../store/context/UserContext";
+import Spinner from "../../../components/Spinner";
+import { login } from "../../../service/auth";
+import Footer from "../../../components/Footer";
+import Input from "../../../components/Input";
+import Error from "../../../components/Error";
+import RememberCheck from "./RememberCheck";
+import Header from "../../../components/Header";
+import { AuthContext } from "../../../store/context/AuthContext";
+import Button from "../../../components/Button";
+import { LOGIN_USER, USER_DATA } from "../../../store/actions/actionTypes";
 
 const Form = () => {
   // REMEMBER ME
@@ -50,12 +51,12 @@ const Form = () => {
         }
 
         if (isChecked && response.data.data.id) {
-          authDispatch({ type: "LOGIN", payload: response.data.data });
+          authDispatch({ type: LOGIN_USER, payload: response.data.data });
         } else {
           sessionStorage.setItem("user", JSON.stringify(response.data.data));
         }
 
-        userDataDispatch({ type: "data", payload: response.data.data });
+        userDataDispatch({ type: USER_DATA, payload: response.data.data });
         toast.success(response.data.message);
         setLoading(false);
         navigate("/home", { replace: true });
@@ -71,7 +72,7 @@ const Form = () => {
   ) : (
     <section className="flex h-[calc(100vh-6px)] items-center justify-center">
       <div className="flex flex-col items-center gap-2">
-        <Header />
+        <Header title="LOGIN TO CONTROL PANEL" />
 
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -118,7 +119,7 @@ const Form = () => {
             <RememberCheck rememberCheck={rememberCheck} />
           </div>
 
-          <LoginBtn />
+          <Button>Login</Button>
         </form>
 
         <Footer />

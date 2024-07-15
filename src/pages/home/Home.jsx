@@ -7,7 +7,8 @@ import {
   GenderSvg,
   LogoutSvg,
   MailSvg,
-} from "../../common/svg";
+} from "../../components/Svg";
+import { LOGOUT_USER } from "../../store/actions/actionTypes";
 
 const Home = () => {
   const { userData } = useContext(UserDataContext);
@@ -19,7 +20,7 @@ const Home = () => {
   const handleLogOut = () => {
     sessionStorage.removeItem("user");
     localStorage.removeItem("user");
-    authDispatch({ type: "LOGOUT" });
+    authDispatch({ type: LOGOUT_USER });
   };
 
   return (
