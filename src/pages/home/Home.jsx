@@ -8,7 +8,7 @@ import {
   LogoutSvg,
   MailSvg,
 } from "../../components/Svg";
-import { LOGOUT_USER } from "../../store/actions/actionTypes";
+import { LOGOUT_USER_SUCCESS } from "../../store/actions/actionTypes";
 
 const Home = () => {
   const { userData } = useContext(UserDataContext);
@@ -20,7 +20,7 @@ const Home = () => {
   const handleLogOut = () => {
     sessionStorage.removeItem("user");
     localStorage.removeItem("user");
-    authDispatch({ type: LOGOUT_USER });
+    authDispatch({ type: LOGOUT_USER_SUCCESS });
   };
 
   return (

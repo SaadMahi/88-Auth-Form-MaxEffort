@@ -1,3 +1,3 @@
-export const LOGIN_USER = "LOGIN_USER";
-export const LOGOUT_USER = "LOGOUT_USER";
-export const USER_DATA = "USER_DATA";
+export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+export const LOGOUT_USER_SUCCESS = "LOGOUT_USER_SUCCESS";
+export const SAVE_USER_DATA = "SAVE_USER_DATA";

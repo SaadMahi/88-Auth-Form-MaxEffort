@@ -1,13 +1,16 @@
-import { LOGIN_USER, LOGOUT_USER } from "../actions/actionTypes";
+import {
+  LOGIN_USER_SUCCESS,
+  LOGOUT_USER_SUCCESS,
+} from "../actions/actionTypes";
 
 const AuthReducer = (state, action) => {
   switch (action.type) {
-    case LOGIN_USER: {
+    case LOGIN_USER_SUCCESS: {
       return {
         currentUser: action.payload,
       };
     }
-    case LOGOUT_USER: {
+    case LOGOUT_USER_SUCCESS: {
       return {
         currentUser: null,
       };

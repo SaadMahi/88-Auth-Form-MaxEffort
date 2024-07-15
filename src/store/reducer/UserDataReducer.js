@@ -1,8 +1,8 @@
-import { USER_DATA } from "../actions/actionTypes";
+import { SAVE_USER_DATA } from "../actions/actionTypes";
 
 const UserDataReducer = (state, action) => {
   switch (action.type) {
-    case USER_DATA: {
+    case SAVE_USER_DATA: {
       return {
         userData: action.payload,
       };

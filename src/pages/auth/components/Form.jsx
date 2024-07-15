@@ -12,7 +12,10 @@ import RememberCheck from "./RememberCheck";
 import Header from "../../../components/Header";
 import { AuthContext } from "../../../store/context/AuthContext";
 import Button from "../../../components/Button";
-import { LOGIN_USER, USER_DATA } from "../../../store/actions/actionTypes";
+import {
+  LOGIN_USER_SUCCESS,
+  SAVE_USER_DATA,
+} from "../../../store/actions/actionTypes";
 
 const Form = () => {
   // REMEMBER ME
@@ -51,12 +54,15 @@ const Form = () => {
         }
 
         if (isChecked && response.data.data.id) {
-          authDispatch({ type: LOGIN_USER, payload: response.data.data });
+          authDispatch({
+            type: LOGIN_USER_SUCCESS,
+            payload: response.data.data,
+          });
         } else {
           sessionStorage.setItem("user", JSON.stringify(response.data.data));
         }
 
-        userDataDispatch({ type: USER_DATA, payload: response.data.data });
+        userDataDispatch({ type: SAVE_USER_DATA, payload: response.data.data });
         toast.success(response.data.message);
         setLoading(false);
         navigate("/home", { replace: true });
